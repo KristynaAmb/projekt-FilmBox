@@ -104,3 +104,108 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 ]
+
+
+//PRIDAT FILM
+//const detail = document.querySelector("#detail-filmu")
+
+/*const filmID = location.hash.substring(1)
+let filmfilmy.forEach((porovnavanyFilm) =>{ if(filmID === porovnavanyFilm.id){ film = porovnavanyFilm } })
+*/
+
+const filmID = location.hash.substring(1)
+ filmy.forEach((film) => {
+	 if (filmID ===film.id){ 
+		film = porovnavanyFilm}
+	 })
+
+ const nazev = document.querySelector("#detail-filmu .card-title");
+  nazev.textContent = filmy.nazev;
+   const plakat = document.querySelector("#detail-filmu img"); 
+   plakat.src = porovnavanyFilm.plakat.url; 
+   
+ 
+   /*const plakat = document.querySelector(".col-md-5")plakat.innerHTML += `<div class="col-md-5"><img
+    src="${filmy.plakat.url}" 
+	alt="plakát" class="img-fluid rounded-start" 
+	width="663"
+	 height="909"
+	 />
+	 </div>`
+
+const nazev = document.querySelector(".card-title")
+//nazev.innerHTML += ""
+nazev.innerHTML += `<h5 class="card-title">"${filmy.nazev}"</h5>`
+*/
+
+
+
+
+
+//PREMIERA
+const prem = dayjs("2023-12-19")
+const datum = document.querySelector("#premiera")
+datum.innerHTML = ""
+
+datum.innerHTML += `<p>Premiéra <strong> - ${prem.format("DD.MM.YYYY")}</p>`
+
+
+const dnes = dayjs();
+const rozdil = prem.diff(dnes, 'days');
+
+
+
+// Zjištění, zda už proběhla, nebo za kolik dní bude
+let message = '';
+if (rozdil === 0) {
+	 message = 'Dnes je premiéra!';
+	} else if (rozdil > 0) {
+		 message = `Premiéra za ${rozdil} `
+		} 
+		
+document.getElementById('premiera').innerHTML += `<p>${message}</p>`; 
+ 
+
+
+
+//HODNOCENI
+let highlightStars = (cislo) => { 
+	let hvezdy = document.querySelectorAll('.fa-star'); 
+	
+	hvezdy.forEach((star, index) => {
+		 if (index < cislo) { 
+			star.classList.remove('far'); 
+			star.classList.add('fas');
+		 } else { 
+			star.classList.remove('fas'); 
+			star.classList.add('far'); 
+		} 
+	});
+ }
+
+
+/*
+ const hvezdy = document.querySelectorAll('.fa-star');
+
+ hvezdy.forEach((star, index) => { 
+	star.addEventListener('click', () => { 
+		const starNumber = parseInt(star.textContent); 
+		highlightStars(starNumber); 
+	});
+ }); 
+
+ hvezdy.forEach((star, index) => { 
+	star.addEventListener('mouseenter', () => {
+		 const prejeti= parseInt(star.textContent); 
+		 hvezdy(prejeti);
+		 }); 
+		});
+
+ let posledniKliknuta = starNumber; 
+ hvezdy.forEach((star, index) => { 
+	star.addEventListener('mouseleave', () => { 
+		const starNumber = parseInt(star.textContent); 
+		highlightStars(posledniKliknuta);
+	 });
+	 }); 
+ */
